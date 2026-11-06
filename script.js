@@ -73,7 +73,7 @@ const BASE = [
   },
   {
     q: ["prix", "tarif", "tarifs", "combien", "c'est combien", "combien ca coute", "cout", "budget"],
-    a: "Tarifs 🇬🇳 (tout en euros)\n• Bot Telegram scripté : 50 €\n• Bot WhatsApp vendeur : 100 €\n• Agent IA Premium : 150 €\n• Maintenance mensuelle : 50 €/mois\n• Logo seul : 50 € (livré en 24h)\n• Logo premium / Pack Premium : 150 €\n• Affiche / visuel : 30 €\n• Site vitrine : 50 € (7 jours)\n• Retouche photo : 10 €\nExpress 24h : +30%\nDis-moi ce qu'il te faut exactement, je te donne le prix précis 👇"
+    a: "Tarifs 🇬🇳 (tout en euros)\n• Bot Telegram scripté : 50 €\n• Bot WhatsApp vendeur : 100 €\n• Agent IA Premium : 150 €\n• Maintenance mensuelle : 50 €/mois\n• Logo seul : 50 € (livré en 24h)\n• Logo premium / Pack Premium : 150 €\n• Affiche / visuel : 30 €\n• Site vitrine : 250 € (7 jours)\n• Retouche photo : 10 €\nExpress 24h : +30%\nDis-moi ce qu'il te faut exactement, je te donne le prix précis 👇"
   },
   {
     q: ["delai", "delais", "combien de temps", "quand", "livraison", "rapidite"],
@@ -117,7 +117,7 @@ const BASE = [
   },
   {
     q: ["site web", "site internet", "site vitrine", "e-commerce", "boutique en ligne"],
-    a: "Pas de sites morts 💻 On crée des sites vitrine ou e-commerce qui transforment les visiteurs en clients : design pro, rapide, adapté au mobile. Site vitrine : 50 € en 7 jours. Tu veux un devis ?"
+    a: "Pas de sites morts 💻 On crée des sites vitrine ou e-commerce qui transforment les visiteurs en clients : design pro, rapide, adapté au mobile. Site vitrine : 250 € en 7 jours. Tu veux un devis ?"
   },
   {
     q: ["logo", "identite visuelle", "charte graphique", "marque"],
