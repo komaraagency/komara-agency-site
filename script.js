@@ -73,7 +73,7 @@ const BASE = [
   },
   {
     q: ["prix", "tarif", "tarifs", "combien", "c'est combien", "combien ca coute", "cout", "budget"],
-    a: "Tarifs 🇬🇳 (tout en euros)\n• Logo seul : 50 € (livré en 24h)\n• Logo premium / Pack Premium : 150 €\n• Affiche / visuel : 30 €\n• Site vitrine : 50 € (7 jours)\n• Retouche photo : 10 €\n• Bot / agent IA : dès 150 €\nExpress 24h : +30%\nDis-moi ce qu'il te faut exactement, je te donne le prix précis 👇"
+    a: "Tarifs 🇬🇳 (tout en euros)\n• Bot Telegram scripté : 50 €\n• Bot WhatsApp vendeur : 100 €\n• Agent IA Premium : 150 €\n• Maintenance mensuelle : 50 €/mois\n• Logo seul : 50 € (livré en 24h)\n• Logo premium / Pack Premium : 150 €\n• Affiche / visuel : 30 €\n• Site vitrine : 50 € (7 jours)\n• Retouche photo : 10 €\nExpress 24h : +30%\nDis-moi ce qu'il te faut exactement, je te donne le prix précis 👇"
   },
   {
     q: ["delai", "delais", "combien de temps", "quand", "livraison", "rapidite"],
