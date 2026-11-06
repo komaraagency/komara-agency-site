@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://komaraagency.github.io/komara-agency-site/sitemap.xml
