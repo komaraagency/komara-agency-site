@@ -54,6 +54,11 @@ body {
 .nav { display: flex; gap: 22px; }
 .nav a { color: var(--texte-doux); text-decoration: none; font-size: 14.5px; }
 .nav a:hover { color: var(--or); }
+.lang-switch {
+  font-size: 12px; font-weight: 700; color: var(--texte-doux); text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, .16); border-radius: 7px; padding: 4px 8px; line-height: 1;
+}
+.lang-switch:hover { color: var(--or); border-color: var(--or); }
 .btn-whatsapp {
   background: var(--vert); color: #08240f; padding: 10px 18px; border-radius: 999px;
   text-decoration: none; font-weight: 800; font-size: 14.5px; white-space: nowrap;
