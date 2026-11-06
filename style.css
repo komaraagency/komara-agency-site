@@ -5,6 +5,9 @@
   --or: #FFD700;
   --or-doux: #f0d98a;
   --vert: #25D366;
+  --rouge: #d11231;
+  --jaune: #f5cf1b;
+  --vert-drapeau: #009a44;
   --blanc: #ffffff;
   --texte-doux: #a8a49b;
   --bord: rgba(255, 215, 0, .25);
@@ -12,6 +15,13 @@
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* bandeau drapeau 🇬🇳 */
+body::before {
+  content: "";
+  position: fixed; top: 0; left: 0; right: 0; height: 4px; z-index: 900;
+  background: linear-gradient(90deg, var(--rouge) 0 33.33%, var(--jaune) 33.33% 66.66%, var(--vert-drapeau) 66.66% 100%);
+}
 
 html { scroll-behavior: smooth; }
 
@@ -36,8 +46,11 @@ body {
   z-index: 500;
 }
 .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
-.logo { font-size: 21px; font-weight: 800; color: var(--blanc); text-decoration: none; letter-spacing: .2px; white-space: nowrap; }
+.logo { display: flex; align-items: center; gap: 10px; font-size: 20px; text-decoration: none; letter-spacing: .2px; white-space: nowrap; }
+.logo b { font-weight: 800; color: var(--blanc); }
 .logo span { color: var(--or); }
+.logo-img { border-radius: 50%; box-shadow: 0 0 14px rgba(255, 215, 0, .28); }
+@media (max-width: 420px) { .logo b { font-size: 17px; } .logo-img { width: 34px; height: 34px; } }
 .nav { display: flex; gap: 22px; }
 .nav a { color: var(--texte-doux); text-decoration: none; font-size: 14.5px; }
 .nav a:hover { color: var(--or); }
@@ -56,6 +69,10 @@ body {
   text-align: center;
   padding: 72px 20px 64px;
   background: radial-gradient(900px 420px at 50% -10%, rgba(255, 215, 0, .12) 0%, transparent 60%);
+}
+.hero-logo {
+  display: block; margin: 0 auto 20px; border-radius: 50%;
+  box-shadow: 0 0 46px rgba(255, 215, 0, .22), 0 0 0 1px rgba(255, 215, 0, .18);
 }
 .badge {
   display: inline-block;
@@ -102,6 +119,9 @@ section h2 { text-align: center; color: var(--or); font-size: clamp(24px, 4.4vw,
   background: var(--noir); padding: 26px; border-radius: var(--radius);
   border-left: 3px solid var(--or); border-top: 1px solid rgba(255, 255, 255, .05);
 }
+.card:nth-child(3n+1) { border-left-color: var(--rouge); }
+.card:nth-child(3n+2) { border-left-color: var(--jaune); }
+.card:nth-child(3n)   { border-left-color: var(--vert-drapeau); }
 .card h3 { font-size: 17px; margin-bottom: 8px; }
 .card p { color: var(--texte-doux); font-size: 14.5px; }
 
@@ -187,6 +207,8 @@ details[open] summary ~ * { animation: fadeIn .3s ease-in-out; }
 
 /* ---------- FOOTER ---------- */
 .footer { padding: 30px 20px; border-top: 1px solid var(--gris-2); text-align: center; }
+.footer-logo-img { line-height: 0; margin-bottom: 12px; }
+.footer-logo-img img { border-radius: 50%; box-shadow: 0 0 18px rgba(255, 215, 0, .22); }
 .footer-logo { font-weight: 800; margin-bottom: 10px; }
 .footer-logo span { color: var(--or); }
 .footer-liens { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 8px; }
