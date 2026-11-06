@@ -6,6 +6,7 @@
    ========================================================= */
 
 /* ---------- 1. FORMULAIRE -> WHATSAPP ---------- */
+const ENDPOINT_DEVIS = "https://superagent-d1588461.base44.app/functions/submitDevis";
 const form = document.getElementById("devisForm");
 if (form) {
   form.addEventListener("submit", function (e) {
@@ -22,8 +23,30 @@ if (form) {
       "*Service :* " + service + "\n" +
       "*Besoin :* " + msg;
 
+    // 1) Sauvegarde de la demande (meme si le client n'envoie pas le message WhatsApp)
+    try {
+      fetch(ENDPOINT_DEVIS, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        keepalive: true,
+        body: JSON.stringify({
+          nom: nom,
+          telephone: tel,
+          service: service,
+          message: msg,
+          page: window.location.href,
+          referrer: document.referrer || ""
+        })
+      }).catch(function () {});
+    } catch (erreur) {
+      /* la demande part quand meme sur WhatsApp */
+    }
+
+    // 2) Ouverture de WhatsApp avec le message pre-rempli
     window.open("https://wa.me/212701986219?text=" + encodeURIComponent(texte), "_blank");
     form.reset();
+    const note = document.querySelector(".form-note");
+    if (note) note.textContent = "Demande enregistree ✅ On continue sur WhatsApp.";
   });
 }
 
