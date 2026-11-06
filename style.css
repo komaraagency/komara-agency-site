@@ -257,3 +257,53 @@ html.hors-ligne::after {
 @media (max-width: 520px) {
   #pwa-install { left: 12px; bottom: 84px; padding: 10px 15px; font-size: 13px; }
 }
+
+/* ---------- PWA : mises à jour et hors ligne ---------- */
+.pwa-bandeau {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #141414;
+  color: #f2efe6;
+  border: 1px solid var(--or);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 13.5px;
+  box-shadow: 0 12px 34px rgba(0,0,0,0.6);
+}
+.pwa-bandeau span { flex: 1; }
+.pwa-bandeau button {
+  background: var(--or);
+  color: #000;
+  border: 0;
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.pwa-bandeau .pwa-fermer {
+  background: transparent;
+  color: #a8a49b;
+  font-weight: 400;
+  padding: 2px 6px;
+}
+html.hors-ligne body::after {
+  content: "📴 Hors ligne — version en cache";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #d11231;
+  color: #fff;
+  font-size: 12px;
+  padding: 5px 8px;
+  text-align: center;
+  z-index: 1300;
+}
