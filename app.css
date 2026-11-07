@@ -625,3 +625,14 @@ html, body { max-width: 100%; overflow-x: hidden; }
   .offre > .offre-prix small { display: block; text-align: right; }
   .offre > button { grid-area: bouton; justify-self: end; }
 }
+
+/* ---- v6.2 : la grille des raccourcis ne depasse plus ---- */
+.grille-raccourcis { width: 100%; min-width: 0; }
+.grille-raccourcis > .raccourci { min-width: 0; width: 100%; overflow: hidden; }
+.raccourci span:last-child { min-width: 0; overflow-wrap: anywhere; font-size: 15px; }
+.raccourci { padding: 14px 10px; gap: 10px; }
+.raccourci .r-ico { font-size: 30px; }
+@media (min-width: 560px) {
+  .raccourci { padding: 16px 4px 14px; }
+  .raccourci .r-ico { font-size: 34px; }
+}
