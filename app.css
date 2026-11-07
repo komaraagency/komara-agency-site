@@ -20,7 +20,7 @@
 
 html {
   background:
-    linear-gradient(180deg,
+    linear-gradient(90deg,
       var(--rouge) 0 33.34%,
       var(--jaune) 33.34% 66.67%,
       var(--vert-k) 66.67% 100%);
@@ -441,12 +441,6 @@ html.hors-ligne .pastille {
 }
 .toast.visible { opacity: 1; transform: translate(-50%, 0); }
 
-/* Sur grand ecran (ordinateur) on garde une largeur confortable,
-   mais sur telephone l'app remplit tout l'ecran. */
-@media (min-width: 900px) {
-  .app { max-width: 100%; }
-  .ecran { padding-left: max(16px, calc((100% - 720px) / 2)); padding-right: max(16px, calc((100% - 720px) / 2)); }
-}
 
 
 /* ============================================================
@@ -670,3 +664,99 @@ html, body { max-width: 100%; overflow-x: hidden; }
   padding: 8px 12px;
   border-radius: 10px;
 }
+
+
+/* ============================================================
+   V7 : PLEIN ECRAN PROPORTIONNEL
+   - tricolore ROUGE | JAUNE | VERT de gauche a droite
+   - zero marge laterale inutile : le contenu remplit la largeur
+   - tout est dimensionne en vw / clamp : lisible quel que soit
+     le viewport que le navigateur decide d'utiliser
+   ============================================================ */
+
+:root {
+  /* echelle de base : 4.4vw = ~16px sur 360, ~32px sur 720 */
+  --u: clamp(15px, 4.4vw, 26px);
+  --marge: clamp(10px, 3vw, 18px);
+}
+
+html { font-size: var(--u); }
+body { font-size: 1rem; }
+
+.app, .ecran, .topbar, .tabbar { width: 100%; max-width: none; }
+
+/* marges laterales faibles et regulieres, jamais plus */
+.ecran {
+  padding: var(--marge) var(--marge) calc(var(--marge) * 2);
+}
+
+/* ---- barre du haut ---- */
+.topbar { padding-left: var(--marge); padding-right: var(--marge); gap: 0.7rem; }
+.topbar-logo { width: 2.7rem; height: 2.7rem; }
+.topbar-titre strong { font-size: 1.12rem; }
+.topbar-titre span { font-size: 0.78rem; }
+.pastille { font-size: 0.74rem; padding: 0.3rem 0.65rem; }
+
+/* ---- titres ---- */
+.salut h1 { font-size: 2.1rem; }
+.salut p { font-size: 1.02rem; }
+.titre-ecran { font-size: 1.85rem; }
+.sous-titre { font-size: 1rem; }
+.titre-section { font-size: 0.88rem; }
+
+/* ---- bloc WhatsApp ---- */
+.carte-cta { padding: 1.05rem; gap: 0.9rem; }
+.cta-ico { width: 3.8rem; height: 3.8rem; font-size: 1.9rem; border-radius: 1.1rem; }
+.cta-texte strong { font-size: 1.12rem; }
+.cta-texte small { font-size: 0.88rem; }
+.chevron { font-size: 1.7rem; }
+
+/* ---- raccourcis : 2 x 2, grandes icones ---- */
+.grille-raccourcis { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; }
+.raccourci { flex-direction: row; justify-content: flex-start; gap: 0.8rem; padding: 1rem 0.9rem; border-radius: 1.1rem; text-align: left; }
+.raccourci .r-ico { font-size: 2.3rem; line-height: 1; }
+.raccourci span:last-child { font-size: 1rem; font-weight: 700; }
+
+/* ---- offres ---- */
+.offre { padding: 1rem; border-radius: 1.1rem; column-gap: 0.9rem; row-gap: 0.8rem; }
+.offre-ico { width: 3.6rem; height: 3.6rem; font-size: 1.85rem; border-radius: 1rem; }
+.offre-corps strong { font-size: 1.1rem; }
+.offre-corps small { font-size: 0.9rem; }
+.offre-prix { font-size: 1.2rem; }
+.offre > .offre-prix small { font-size: 0.88rem; }
+.offre button { font-size: 0.98rem; padding: 0.7rem 1.05rem; min-height: 2.8rem; border-radius: 0.8rem; }
+
+/* ---- filtres ---- */
+.chip { font-size: 0.98rem; padding: 0.65rem 1.1rem; }
+
+/* ---- encart ---- */
+.encart { padding: 1rem; border-radius: 1.1rem; }
+.encart strong { font-size: 1.08rem; }
+.encart p { font-size: 0.94rem; }
+
+/* ---- formulaire ---- */
+.form label { font-size: 0.88rem; }
+.form input, .form select, .form textarea { font-size: 1.08rem; padding: 1rem; }
+.btn { font-size: 1.15rem; padding: 1.1rem 1.2rem; }
+.mini { font-size: 0.88rem; }
+.recap .ok { font-size: 1.9rem; }
+.recap strong { font-size: 1.08rem; }
+.recap p { font-size: 0.94rem; }
+
+/* ---- onglet Plus ---- */
+.profil { padding: 1rem; gap: 1rem; }
+.profil img { width: 4.6rem; height: 4.6rem; }
+.profil strong { font-size: 1.2rem; }
+.profil span { font-size: 0.94rem; }
+.lien { padding: 1.1rem 1rem; font-size: 1.08rem; gap: 0.9rem; }
+.lien > span:first-child { font-size: 1.9rem; width: 2.3rem; }
+.version { font-size: 0.88rem; }
+
+/* ---- barre d'onglets : grosses icones ---- */
+.tabbar { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.onglet { padding: 0.7rem 0.1rem 0.6rem; gap: 0.25rem; }
+.o-ico { font-size: 2rem; }
+.o-txt { font-size: 0.82rem; }
+.onglet.actif::before { width: 2.4rem; height: 0.26rem; }
+
+.toast { font-size: 0.98rem; }
