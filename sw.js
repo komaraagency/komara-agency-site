@@ -13,7 +13,7 @@
    - POST / API (formulaire, devis) : jamais mis en cache, jamais intercepté.
 */
 
-const CACHE = "komara-shell-v9";
+const CACHE = "komara-shell-v10";
 const CACHE_HTML = CACHE + "-pages";
 const CACHE_STATIQUE = CACHE + "-static";
 

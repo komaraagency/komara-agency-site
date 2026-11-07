@@ -646,3 +646,27 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .raccourci .r-ico { font-size: 28px; }
 .raccourci span:last-child { font-size: 14.5px; line-height: 1.2; }
 .ecran { overflow-x: clip; }
+
+/* ---- v6.4 : mots entiers + etiquettes de formulaire lisibles ---- */
+.raccourci span:last-child { overflow-wrap: normal; word-break: normal; hyphens: manual; font-size: 14px; }
+.raccourci { padding: 14px 8px; gap: 8px; }
+.raccourci .r-ico { font-size: 26px; }
+
+.form label {
+  background: rgba(10, 10, 10, 0.9);
+  color: #f1ede0;
+  padding: 10px 12px 12px;
+  border-radius: 14px;
+  gap: 8px;
+}
+.form label input,
+.form label select,
+.form label textarea {
+  margin-top: 2px;
+}
+.mini {
+  background: rgba(10, 10, 10, 0.88);
+  color: #e6e2d6;
+  padding: 8px 12px;
+  border-radius: 10px;
+}
