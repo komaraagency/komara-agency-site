@@ -14,6 +14,18 @@ pre{color:#8f8;font-size:11px;margin:4px 0 0;white-space:pre-wrap;max-width:376p
   <div><p>Devis</p><div class="tel"><iframe id="f3" src="app.html?z=13#devis"></iframe></div><pre id="m3"></pre></div>
 </div>
 <script>
+(async function(){
+  try{
+    var regs=await navigator.serviceWorker.getRegistrations();
+    for(var r of regs) await r.unregister();
+    var noms=await caches.keys();
+    for(var n of noms) await caches.delete(n);
+  }catch(e){}
+  ["f1","f2","f3"].forEach(function(id){
+    var f=document.getElementById(id);
+    f.src=f.src.split("#")[0].replace(/z=\d+/,"z="+Date.now())+"#"+(id==="f1"?"accueil":id==="f2"?"offres":"devis");
+  });
+})();
 function mesure(fid, mid){
   var f=document.getElementById(fid), out=document.getElementById(mid);
   try{
@@ -36,6 +48,6 @@ function mesure(fid, mid){
       " | plus petit texte: "+mini.toFixed(1)+"px";
   }catch(e){out.textContent="erreur "+e.message}
 }
-setTimeout(function(){mesure("f1","m1");mesure("f2","m2");mesure("f3","m3");},3500);
+setTimeout(function(){mesure("f1","m1");mesure("f2","m2");mesure("f3","m3");},6500);
 </script>
 </body></html>
