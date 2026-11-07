@@ -6,7 +6,7 @@ html,body{margin:0;background:#333;font-family:monospace;color:#8f8;font-size:12
 .col{flex:0 0 auto}
 .cadre{border:4px solid #000;overflow:hidden;background:#000}
 iframe{border:0;display:block;transform-origin:0 0}
-pre{margin:4px 0 0;white-space:pre-wrap;width:340px}
+pre{margin:4px 0 0;white-space:pre-wrap;width:410px}
 </style></head><body>
 <div class="rang" id="rang"></div>
 <script>
@@ -16,12 +16,12 @@ pre{margin:4px 0 0;white-space:pre-wrap;width:340px}
     for(var r of regs) await r.unregister();
     for(var n of await caches.keys()) await caches.delete(n);
   }catch(e){}
-  var cas=[{w:360,h:760,n:"Viewport 360"},{w:910,h:1900,n:"Viewport 910 (ton cas)"}];
+  var cas=[{w:910,h:1900,n:"910 Accueil",e:"accueil"},{w:910,h:1900,n:"910 Offres",e:"offres"},{w:910,h:1900,n:"910 Plus",e:"plus"}];
   var rang=document.getElementById("rang");
   cas.forEach(function(c,i){
-    var echelle=Math.min(1, 340/c.w);
+    var echelle=Math.min(1, 410/c.w);
     var col=document.createElement("div"); col.className="col";
-    col.innerHTML='<div>'+c.n+'</div><div class="cadre" style="width:'+Math.round(c.w*echelle)+'px;height:'+Math.round(c.h*echelle)+'px"><iframe id="f'+i+'" width="'+c.w+'" height="'+c.h+'" style="transform:scale('+echelle+')" src="app.html?t='+Date.now()+i+'#accueil"></iframe></div><pre id="m'+i+'"></pre>';
+    col.innerHTML='<div>'+c.n+'</div><div class="cadre" style="width:'+Math.round(c.w*echelle)+'px;height:'+Math.round(c.h*echelle)+'px"><iframe id="f'+i+'" width="'+c.w+'" height="'+c.h+'" style="transform:scale('+echelle+')" src="app.html?t='+Date.now()+i+'#'+c.e+'"></iframe></div><pre id="m'+i+'"></pre>';
     rang.appendChild(col);
   });
   setTimeout(function(){
@@ -29,7 +29,7 @@ pre{margin:4px 0 0;white-space:pre-wrap;width:340px}
       var f=document.getElementById("f"+i), out=document.getElementById("m"+i);
       try{
         var d=f.contentDocument,w=f.contentWindow;
-        var carte=d.querySelector(".carte-cta").getBoundingClientRect();
+        var cible=d.querySelector(".ecran.actif .offre, .ecran.actif .carte-cta, .ecran.actif .profil");var carte=cible.getBoundingClientRect();
         var barre=d.querySelector(".tabbar").getBoundingClientRect();
         var fond=w.getComputedStyle(d.documentElement).backgroundImage;
         var tailles=[];
