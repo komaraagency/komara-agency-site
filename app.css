@@ -791,3 +791,7 @@ body { font-size: 1rem; }
 /* titre de bloc WhatsApp : tient sur une ligne */
 .cta-texte small { font-size: 0.82rem; }
 .salut p { font-size: 0.95rem; }
+
+/* barre de defilement masquee : rendu identique sur tous les appareils */
+.ecran { scrollbar-width: none; -ms-overflow-style: none; }
+.ecran::-webkit-scrollbar { display: none; width: 0; height: 0; }
