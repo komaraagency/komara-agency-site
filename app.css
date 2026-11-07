@@ -636,3 +636,13 @@ html, body { max-width: 100%; overflow-x: hidden; }
   .raccourci { padding: 16px 4px 14px; }
   .raccourci .r-ico { font-size: 34px; }
 }
+
+/* ---- v6.3 : colonnes strictement bornees (minmax(0,1fr)) ---- */
+.grille-raccourcis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 560px) {
+  .grille-raccourcis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.raccourci { font-size: 15px; }
+.raccourci .r-ico { font-size: 28px; }
+.raccourci span:last-child { font-size: 14.5px; line-height: 1.2; }
+.ecran { overflow-x: clip; }
