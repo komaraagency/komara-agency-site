@@ -760,3 +760,34 @@ body { font-size: 1rem; }
 .onglet.actif::before { width: 2.4rem; height: 0.26rem; }
 
 .toast { font-size: 0.98rem; }
+
+/* ============================================================
+   V7.1 : echelle sans plafond + raccourcis qui ne coupent plus
+   ============================================================ */
+:root {
+  /* proportionnel a la largeur reelle : 360px -> 16px ; 910px -> 40px */
+  --u: clamp(15px, 4.45vw, 56px);
+  --marge: clamp(10px, 3vw, 28px);
+}
+
+/* raccourcis : icone au-dessus, texte dessous, toujours en entier */
+.raccourci {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 0.35rem;
+  padding: 0.9rem 0.4rem 0.8rem;
+}
+.raccourci .r-ico { font-size: 2.5rem; }
+.raccourci span:last-child {
+  font-size: 0.86rem;
+  white-space: nowrap;
+  overflow: visible;
+  line-height: 1.15;
+}
+.grille-raccourcis { gap: 0.6rem; }
+
+/* titre de bloc WhatsApp : tient sur une ligne */
+.cta-texte small { font-size: 0.82rem; }
+.salut p { font-size: 0.95rem; }
