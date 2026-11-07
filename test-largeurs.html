@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><title>test largeurs</title>
+<style>
+html,body{margin:0;background:#333;font-family:monospace;color:#8f8;font-size:12px}
+.rang{display:flex;gap:10px;padding:8px;align-items:flex-start}
+.col{flex:0 0 auto}
+.cadre{border:4px solid #000;overflow:hidden;background:#000}
+iframe{border:0;display:block;transform-origin:0 0}
+pre{margin:4px 0 0;white-space:pre-wrap;width:340px}
+</style></head><body>
+<div class="rang" id="rang"></div>
+<script>
+(async function(){
+  try{
+    var regs=await navigator.serviceWorker.getRegistrations();
+    for(var r of regs) await r.unregister();
+    for(var n of await caches.keys()) await caches.delete(n);
+  }catch(e){}
+  var cas=[{w:360,h:760,n:"Viewport 360"},{w:910,h:1900,n:"Viewport 910 (ton cas)"}];
+  var rang=document.getElementById("rang");
+  cas.forEach(function(c,i){
+    var echelle=Math.min(1, 340/c.w);
+    var col=document.createElement("div"); col.className="col";
+    col.innerHTML='<div>'+c.n+'</div><div class="cadre" style="width:'+Math.round(c.w*echelle)+'px;height:'+Math.round(c.h*echelle)+'px"><iframe id="f'+i+'" width="'+c.w+'" height="'+c.h+'" style="transform:scale('+echelle+')" src="app.html?t='+Date.now()+i+'#accueil"></iframe></div><pre id="m'+i+'"></pre>';
+    rang.appendChild(col);
+  });
+  setTimeout(function(){
+    cas.forEach(function(c,i){
+      var f=document.getElementById("f"+i), out=document.getElementById("m"+i);
+      try{
+        var d=f.contentDocument,w=f.contentWindow;
+        var carte=d.querySelector(".carte-cta").getBoundingClientRect();
+        var barre=d.querySelector(".tabbar").getBoundingClientRect();
+        var fond=w.getComputedStyle(d.documentElement).backgroundImage;
+        var tailles=[];
+        d.querySelectorAll(".ecran.actif *").forEach(function(el){
+          if(el.children.length===0&&el.textContent.trim().length>1) tailles.push(parseFloat(w.getComputedStyle(el).fontSize));
+        });
+        var ico=d.querySelector(".r-ico"), tab=d.querySelector(".o-ico");
+        out.textContent=
+          "viewport : "+w.innerWidth+"px\n"+
+          "marge G/D de la carte : "+Math.round(carte.left)+"px / "+Math.round(w.innerWidth-carte.right)+"px  ("+(Math.round(carte.left/w.innerWidth*1000)/10)+"% de la largeur)\n"+
+          "carte = "+Math.round(carte.width/w.innerWidth*100)+"% de l'ecran\n"+
+          "plus petit texte : "+Math.min.apply(null,tailles).toFixed(1)+"px = "+(Math.min.apply(null,tailles)/w.innerWidth*360).toFixed(1)+"px sur un 360\n"+
+          "icone raccourci : "+parseFloat(w.getComputedStyle(ico).fontSize).toFixed(0)+"px | icone onglet : "+parseFloat(w.getComputedStyle(tab).fontSize).toFixed(0)+"px\n"+
+          "fond : "+(fond.indexOf("90deg")>-1?"tricolore GAUCHE>DROITE":"AUTRE: "+fond.slice(0,40))+"\n"+
+          "tabbar bas : "+Math.round(barre.bottom)+" / "+w.innerHeight;
+      }catch(e){out.textContent="erreur "+e.message}
+    });
+  },7000);
+})();
+</script></body></html>
