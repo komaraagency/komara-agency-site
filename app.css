@@ -9,22 +9,29 @@
   --texte: #f5f3ec;
   --doux: #9c988e;
   --or: #FFD700;
-  --rouge: #d11231;
-  --jaune: #f5cf1b;
-  --vert-k: #009a44;
+  --rouge: #c8102e;
+  --jaune: #fcd116;
+  --vert-k: #00853f;
   --wa: #25D366;
   --barre: 64px;
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
-html { background: var(--noir); }
+html {
+  background:
+    linear-gradient(180deg,
+      var(--rouge) 0 33.34%,
+      var(--jaune) 33.34% 66.67%,
+      var(--vert-k) 66.67% 100%);
+  background-attachment: fixed;
+}
 
 body {
   margin: 0;
   height: 100vh;
   height: 100dvh;
-  background: var(--noir);
+  background: transparent;
   color: var(--texte);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
@@ -46,16 +53,6 @@ body {
   margin: 0;
 }
 
-/* fine barre drapeau : identité, discrète */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: linear-gradient(90deg,
-    var(--rouge) 0 33.3%, var(--jaune) 33.3% 66.6%, var(--vert-k) 66.6% 100%);
-  z-index: 60;
-}
 
 /* ---------------- BARRE DU HAUT ---------------- */
 .topbar {
@@ -67,17 +64,17 @@ body::before {
   gap: 10px;
   padding: 10px 16px;
   padding-top: calc(10px + env(safe-area-inset-top, 0px));
-  background: rgba(10, 10, 10, 0.88);
+  background: rgba(10, 10, 10, 0.94);
   backdrop-filter: saturate(140%) blur(14px);
   -webkit-backdrop-filter: saturate(140%) blur(14px);
   border-bottom: 1px solid var(--bordure);
 }
-.topbar-logo { width: 34px; height: 34px; border-radius: 50%; }
+.topbar-logo { width: 44px; height: 44px; border-radius: 50%; }
 .topbar-titre { display: flex; flex-direction: column; line-height: 1.15; flex: 1; min-width: 0; }
-.topbar-titre strong { font-size: 15.5px; letter-spacing: 0.2px; }
-.topbar-titre span { font-size: 11.5px; color: var(--doux); text-transform: uppercase; letter-spacing: 0.9px; }
+.topbar-titre strong { font-size: 18px; letter-spacing: 0.2px; }
+.topbar-titre span { font-size: 13px; color: var(--doux); text-transform: uppercase; letter-spacing: 0.9px; }
 .pastille {
-  font-size: 10.5px;
+  font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.6px;
@@ -111,13 +108,13 @@ html.hors-ligne .pastille {
 }
 
 .salut { margin-bottom: 18px; }
-.salut h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -0.4px; }
-.salut p { margin: 0; color: var(--doux); font-size: 15px; }
+.salut h1 { font-size: 34px; margin: 0 0 4px; letter-spacing: -0.4px; }
+.salut p { margin: 0; color: var(--doux); font-size: 17px; }
 
-.titre-ecran { font-size: 24px; margin: 4px 0 4px; letter-spacing: -0.3px; }
-.sous-titre { color: var(--doux); font-size: 14.5px; margin: 0 0 16px; }
+.titre-ecran { font-size: 30px; margin: 4px 0 4px; letter-spacing: -0.3px; }
+.sous-titre { color: var(--doux); font-size: 16px; margin: 0 0 16px; }
 .titre-section {
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1.1px;
   color: var(--doux);
@@ -142,16 +139,16 @@ html.hors-ligne .pastille {
 }
 .carte-cta:active { transform: scale(0.985); }
 .cta-ico {
-  width: 44px; height: 44px;
+  width: 60px; height: 60px;
   display: grid; place-items: center;
-  font-size: 21px;
+  font-size: 30px;
   border-radius: 14px;
   background: var(--wa);
 }
 .cta-texte { display: flex; flex-direction: column; flex: 1; }
-.cta-texte strong { font-size: 15.5px; }
-.cta-texte small { color: var(--doux); font-size: 12.5px; }
-.chevron { color: var(--doux); font-size: 20px; line-height: 1; }
+.cta-texte strong { font-size: 18px; }
+.cta-texte small { color: var(--doux); font-size: 14px; }
+.chevron { color: var(--doux); font-size: 26px; line-height: 1; }
 
 /* ---------------- RACCOURCIS ---------------- */
 .grille-raccourcis {
@@ -171,12 +168,12 @@ html.hors-ligne .pastille {
   border: 1px solid var(--bordure);
   color: var(--texte);
   font: inherit;
-  font-size: 11.5px;
+  font-size: 14px;
   cursor: pointer;
   transition: transform 0.12s ease;
 }
 .raccourci:active { transform: scale(0.96); }
-.r-ico { font-size: 20px; }
+.r-ico { font-size: 34px; }
 
 /* ---------------- OFFRES ---------------- */
 .liste-offres { display: flex; flex-direction: column; gap: 10px; }
@@ -191,30 +188,30 @@ html.hors-ligne .pastille {
   border: 1px solid var(--bordure);
 }
 .offre-ico {
-  width: 40px; height: 40px;
+  width: 56px; height: 56px;
   display: grid; place-items: center;
-  font-size: 19px;
+  font-size: 28px;
   border-radius: 12px;
   background: var(--surface-2);
   flex-shrink: 0;
 }
 .offre-corps { flex: 1; min-width: 0; }
-.offre-corps strong { display: block; font-size: 15.5px; font-weight: 650; }
-.offre-corps small { display: block; color: var(--doux); font-size: 13px; margin-top: 2px; }
+.offre-corps strong { display: block; font-size: 17.5px; font-weight: 650; }
+.offre-corps small { display: block; color: var(--doux); font-size: 14.5px; margin-top: 2px; }
 .offre-prix {
   font-weight: 800;
-  font-size: 15px;
+  font-size: 18px;
   color: var(--or);
   white-space: nowrap;
 }
-.offre-prix small { display: block; font-weight: 500; font-size: 10.5px; color: var(--doux); text-align: right; }
+.offre-prix small { display: block; font-weight: 500; font-size: 12.5px; color: var(--doux); text-align: right; }
 .offre button {
   border: 0;
   background: var(--or);
   color: #000;
   font: inherit;
   font-weight: 700;
-  font-size: 12.5px;
+  font-size: 14.5px;
   padding: 8px 11px;
   border-radius: 10px;
   cursor: pointer;
@@ -242,7 +239,7 @@ html.hors-ligne .pastille {
   border: 1px solid var(--bordure);
   color: var(--doux);
   font: inherit;
-  font-size: 13px;
+  font-size: 15px;
   cursor: pointer;
 }
 .chip.actif {
@@ -260,8 +257,8 @@ html.hors-ligne .pastille {
   background: rgba(255, 215, 0, 0.07);
   border: 1px solid rgba(255, 215, 0, 0.25);
 }
-.encart strong { color: var(--or); font-size: 14px; }
-.encart p { margin: 4px 0 0; font-size: 12.8px; color: var(--doux); }
+.encart strong { color: var(--or); font-size: 16.5px; }
+.encart p { margin: 4px 0 0; font-size: 14.5px; color: var(--doux); }
 
 /* ---------------- FORMULAIRE ---------------- */
 .form { display: flex; flex-direction: column; gap: 13px; }
@@ -269,7 +266,7 @@ html.hors-ligne .pastille {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  font-size: 12.5px;
+  font-size: 14px;
   color: var(--doux);
   text-transform: uppercase;
   letter-spacing: 0.7px;
@@ -305,7 +302,7 @@ html.hors-ligne .pastille {
   padding: 15px 18px;
   font: inherit;
   font-weight: 750;
-  font-size: 15.5px;
+  font-size: 17.5px;
   cursor: pointer;
   transition: transform 0.12s ease, opacity 0.2s;
 }
@@ -319,7 +316,7 @@ html.hors-ligne .pastille {
   color: var(--texte);
   border: 1px solid var(--bordure);
 }
-.mini { font-size: 11.5px; color: var(--doux); text-align: center; margin: 2px 0 0; }
+.mini { font-size: 13.5px; color: var(--doux); text-align: center; margin: 2px 0 0; }
 
 .recap {
   display: flex;
@@ -331,9 +328,9 @@ html.hors-ligne .pastille {
   background: rgba(0, 154, 68, 0.12);
   border: 1px solid rgba(0, 154, 68, 0.4);
 }
-.recap .ok { font-size: 20px; }
-.recap strong { font-size: 14.5px; }
-.recap p { margin: 2px 0 0; font-size: 12.5px; color: var(--doux); }
+.recap .ok { font-size: 28px; }
+.recap strong { font-size: 16.5px; }
+.recap p { margin: 2px 0 0; font-size: 14.5px; color: var(--doux); }
 
 /* ---------------- PROFIL & LIENS ---------------- */
 .profil {
@@ -346,9 +343,9 @@ html.hors-ligne .pastille {
   border: 1px solid var(--bordure);
   margin-bottom: 18px;
 }
-.profil img { width: 52px; height: 52px; border-radius: 50%; }
-.profil strong { display: block; font-size: 15.5px; }
-.profil span { font-size: 12.5px; color: var(--doux); }
+.profil img { width: 72px; height: 72px; border-radius: 50%; }
+.profil strong { display: block; font-size: 18.5px; }
+.profil span { font-size: 14.5px; color: var(--doux); }
 
 .liste-liens {
   border-radius: 16px;
@@ -367,7 +364,7 @@ html.hors-ligne .pastille {
   border-bottom: 1px solid var(--bordure);
   color: var(--texte);
   font: inherit;
-  font-size: 14.5px;
+  font-size: 17px;
   text-align: left;
   text-decoration: none;
   cursor: pointer;
@@ -376,7 +373,7 @@ html.hors-ligne .pastille {
 .lien > span:nth-child(2) { flex: 1; }
 .lien:active { background: var(--surface-2); }
 
-.version { text-align: center; font-size: 12px; color: var(--doux); margin: 22px 0 0; }
+.version { text-align: center; font-size: 14px; color: var(--doux); margin: 22px 0 0; }
 
 /* ---------------- BARRE D'ONGLETS ---------------- */
 .tabbar {
@@ -403,12 +400,12 @@ html.hors-ligne .pastille {
   border: 0;
   color: var(--doux);
   font: inherit;
-  font-size: 10.5px;
+  font-size: 13px;
   cursor: pointer;
   position: relative;
   transition: color 0.18s;
 }
-.o-ico { font-size: 19px; line-height: 1; filter: grayscale(0.75); transition: filter 0.2s, transform 0.2s; }
+.o-ico { font-size: 29px; line-height: 1; filter: grayscale(0.75); transition: filter 0.2s, transform 0.2s; }
 .onglet.actif { color: var(--or); }
 .onglet.actif .o-ico { filter: none; transform: translateY(-1px); }
 .onglet.actif::before {
@@ -433,7 +430,7 @@ html.hors-ligne .pastille {
   border-radius: 12px;
   background: #24242a;
   color: var(--texte);
-  font-size: 13px;
+  font-size: 15px;
   border: 1px solid var(--bordure);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55);
   opacity: 0;
@@ -450,3 +447,109 @@ html.hors-ligne .pastille {
   .app { max-width: 100%; }
   .ecran { padding-left: max(16px, calc((100% - 720px) / 2)); padding-right: max(16px, calc((100% - 720px) / 2)); }
 }
+
+
+/* ============================================================
+   LISIBILITE ET FOND TRICOLORE (v6)
+   Le fond est le drapeau R-J-V ; le contenu repose sur des
+   cartes sombres pour rester parfaitement lisible.
+   ============================================================ */
+
+/* cartes : sombres et opaques pour contraster avec le fond */
+.carte-cta,
+.raccourci,
+.offre,
+.liste-liens,
+.profil,
+.encart,
+.recap,
+.form input,
+.form select,
+.form textarea,
+.chip {
+  background-color: #101012;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+.carte-cta { background-image: linear-gradient(135deg, rgba(37,211,102,.22), rgba(16,16,18,.96)); border-color: rgba(37,211,102,.55); }
+.encart { background-color: #14120a; border-color: rgba(255, 215, 0, 0.45); }
+.recap { background-color: #0d1a12; border-color: rgba(0, 154, 68, 0.6); }
+.chip.actif { background-color: var(--or); color: #000; }
+
+/* titres posés directement sur le fond coloré : pastille sombre lisible */
+.salut,
+.titre-ecran,
+.sous-titre,
+.titre-section {
+  text-shadow: none;
+}
+.salut {
+  background: rgba(10, 10, 10, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 16px 18px;
+}
+.salut h1 { color: #fff; }
+.salut p { color: #d6d2c6; }
+
+.titre-ecran {
+  display: inline-block;
+  background: rgba(10, 10, 10, 0.9);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 14px;
+  margin-bottom: 10px;
+}
+.sous-titre {
+  background: rgba(10, 10, 10, 0.82);
+  color: #e6e2d6;
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+.titre-section {
+  display: inline-block;
+  background: rgba(10, 10, 10, 0.9);
+  color: #f1ede0;
+  padding: 7px 13px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+}
+.version {
+  display: inline-block;
+  background: rgba(10, 10, 10, 0.85);
+  color: #d6d2c6;
+  padding: 8px 14px;
+  border-radius: 10px;
+}
+.version { margin-left: 50%; transform: translateX(-50%); white-space: nowrap; }
+
+/* texte secondaire plus clair sur les cartes */
+.offre-corps small,
+.cta-texte small,
+.profil span,
+.recap p,
+.encart p,
+.mini,
+.offre-prix small { color: #cbc7bb; }
+
+/* zones tactiles confortables */
+.raccourci { padding: 16px 4px 14px; gap: 8px; border-radius: 18px; }
+.offre { padding: 16px; gap: 14px; border-radius: 18px; }
+.offre button { padding: 12px 16px; border-radius: 12px; min-height: 44px; }
+.lien { padding: 18px 16px; gap: 14px; }
+.lien > span:first-child { font-size: 26px; width: 34px; text-align: center; }
+.carte-cta { padding: 18px 18px; border-radius: 20px; }
+.form input, .form select, .form textarea { padding: 16px 16px; font-size: 17px; }
+.btn { padding: 18px 20px; border-radius: 16px; }
+.chip { padding: 11px 18px; }
+.topbar { padding-top: calc(12px + env(safe-area-inset-top, 0px)); padding-bottom: 12px; }
+
+/* barre d'onglets : plus haute, icônes nettes */
+.tabbar { background: rgba(10, 10, 10, 0.97); border-top: 2px solid var(--or); }
+.onglet { padding: 12px 2px 10px; gap: 5px; }
+.o-ico { filter: none; opacity: 0.8; }
+.onglet.actif .o-ico { opacity: 1; transform: translateY(-2px) scale(1.08); }
+.onglet.actif::before { width: 38px; height: 4px; }
+.o-txt { font-weight: 700; }
+
+/* le fond tricolore doit toujours rester visible entre les cartes */
+.ecran { background: transparent; }
