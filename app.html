@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Komara Agency</title>
+<meta name="description" content="Application Komara Agency : bots WhatsApp, sites web, design. Devis en 2 minutes.">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Komara">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body data-install-button="off">
+
+<div class="app">
+
+  <!-- ============ BARRE DU HAUT ============ -->
+  <header class="topbar">
+    <img src="assets/logo-128.png" alt="" class="topbar-logo">
+    <div class="topbar-titre">
+      <strong>Komara Agency</strong>
+      <span id="topbar-sous">Application</span>
+    </div>
+    <span class="pastille" id="pastille-etat">en ligne</span>
+  </header>
+
+  <!-- ============ ECRAN ACCUEIL ============ -->
+  <main class="ecran actif" id="ecran-accueil">
+    <section class="salut">
+      <h1>Salut 👋</h1>
+      <p>Ton business digital, prêt à vendre 24h/24.</p>
+    </section>
+
+    <button class="carte-cta" id="cta-whatsapp" type="button">
+      <span class="cta-ico">💬</span>
+      <span class="cta-texte">
+        <strong>Parler à Komara</strong>
+        <small>Réponse en 2 minutes sur WhatsApp</small>
+      </span>
+      <span class="chevron">›</span>
+    </button>
+
+    <div class="grille-raccourcis">
+      <button class="raccourci" data-va="devis" type="button">
+        <span class="r-ico">📝</span><span>Devis gratuit</span>
+      </button>
+      <button class="raccourci" data-va="offres" type="button">
+        <span class="r-ico">💶</span><span>Tarifs</span>
+      </button>
+      <button class="raccourci" id="raccourci-site" type="button">
+        <span class="r-ico">🖥️</span><span>Réalisations</span>
+      </button>
+      <button class="raccourci" id="raccourci-wa" type="button">
+        <span class="r-ico">📲</span><span>WhatsApp</span>
+      </button>
+    </div>
+
+    <h2 class="titre-section">Les plus demandés</h2>
+    <div id="phares" class="liste-offres"></div>
+
+    <div class="encart">
+      <strong>50 % pour démarrer</strong>
+      <p>On lance la production dès l'acompte. Le solde à la livraison.</p>
+    </div>
+  </main>
+
+  <!-- ============ ECRAN OFFRES ============ -->
+  <main class="ecran" id="ecran-offres">
+    <h1 class="titre-ecran">Offres & tarifs</h1>
+    <p class="sous-titre">Prix en euros, sans surprise. Express 24h : +30 %.</p>
+    <div class="chips" id="chips">
+      <button class="chip actif" data-cat="tous" type="button">Tout</button>
+      <button class="chip" data-cat="bots" type="button">Bots & IA</button>
+      <button class="chip" data-cat="web" type="button">Web</button>
+      <button class="chip" data-cat="design" type="button">Design</button>
+      <button class="chip" data-cat="service" type="button">Services</button>
+    </div>
+    <div id="liste-offres" class="liste-offres"></div>
+  </main>
+
+  <!-- ============ ECRAN DEVIS ============ -->
+  <main class="ecran" id="ecran-devis">
+    <h1 class="titre-ecran">Demander un devis</h1>
+    <p class="sous-titre">Gratuit, réponse en 2 minutes. Aucun paiement ici.</p>
+
+    <form id="form-devis" class="form" novalidate>
+      <label>Ton nom
+        <input type="text" name="nom" id="nom" autocomplete="name" placeholder="Ex : Mamadou Diallo" required>
+      </label>
+      <label>Ton WhatsApp
+        <input type="tel" name="telephone" id="telephone" inputmode="tel" autocomplete="tel" placeholder="+224 6XX XX XX XX" required>
+      </label>
+      <label>Ce qu'il te faut
+        <select name="service" id="service">
+          <option>Bot WhatsApp / agent IA</option>
+          <option>Site web</option>
+          <option>Logo / identité visuelle</option>
+          <option>Affiche / visuel</option>
+          <option>Retouche photo</option>
+          <option>Modération de pages</option>
+          <option>Autre</option>
+        </select>
+      </label>
+      <label>Ton projet en 2 lignes
+        <textarea name="message" id="message" rows="3" placeholder="Ex : je vends des vêtements, je veux un bot qui répond et prend les commandes."></textarea>
+      </label>
+      <button type="submit" class="btn primaire" id="btn-envoyer">Envoyer ma demande</button>
+      <p class="mini">En envoyant, tu acceptes nos conditions de service.</p>
+    </form>
+
+    <div class="recap" id="recap" hidden>
+      <span class="ok">✅</span>
+      <div>
+        <strong>Demande envoyée</strong>
+        <p>Komara te répond sur WhatsApp très vite.</p>
+      </div>
+    </div>
+
+    <button class="btn fantome" id="btn-devis-wa" type="button">Envoyer aussi sur WhatsApp</button>
+  </main>
+
+  <!-- ============ ECRAN PLUS ============ -->
+  <main class="ecran" id="ecran-plus">
+    <div class="profil">
+      <img src="assets/logo-128.png" alt="Komara Agency">
+      <div>
+        <strong>Komara Agency 🇬🇳</strong>
+        <span>Casablanca · Conakry</span>
+      </div>
+    </div>
+
+    <div class="liste-liens">
+      <a href="https://wa.me/212701986219" class="lien">
+        <span>💬</span><span>WhatsApp</span><span class="chevron">›</span>
+      </a>
+      <a href="mailto:ndinekomara2442@gmail.com" class="lien">
+        <span>✉️</span><span>ndinekomara2442@gmail.com</span><span class="chevron">›</span>
+      </a>
+      <a href="tel:+212701986219" class="lien">
+        <span>📞</span><span>+212 701 986 219</span><span class="chevron">›</span>
+      </a>
+    </div>
+
+    <h2 class="titre-section">L'app</h2>
+    <div class="liste-liens">
+      <button class="lien" id="btn-installer" type="button">
+        <span>⬇️</span><span>Installer l'application</span><span class="chevron">›</span>
+      </button>
+      <button class="lien" id="btn-maj" type="button">
+        <span>🔄</span><span>Vérifier les mises à jour</span><span class="chevron">›</span>
+      </button>
+      <button class="lien" id="btn-partager" type="button">
+        <span>📤</span><span>Partager l'application</span><span class="chevron">›</span>
+      </button>
+      <a href="index.html?web=1" class="lien">
+        <span>🖥️</span><span>Voir le site web</span><span class="chevron">›</span>
+      </a>
+    </div>
+
+    <h2 class="titre-section">Informations</h2>
+    <div class="liste-liens">
+      <a href="https://komaraagency.github.io/komara-bot-terms/" class="lien">
+        <span>📄</span><span>Conditions de service</span><span class="chevron">›</span>
+      </a>
+      <a href="https://komaraagency.github.io/komara-bot-terms/confidentialite.html" class="lien">
+        <span>🔒</span><span>Confidentialité</span><span class="chevron">›</span>
+      </a>
+      <a href="https://komaraagency.github.io/komara-bot-terms/suppression-donnees.html" class="lien">
+        <span>🗑️</span><span>Suppression des données</span><span class="chevron">›</span>
+      </a>
+    </div>
+
+    <p class="version">Version <span id="version-app">1.0</span> · © 2026 Komara Agency</p>
+  </main>
+
+  <!-- ============ BARRE D'ONGLETS ============ -->
+  <nav class="tabbar" aria-label="Navigation principale">
+    <button class="onglet actif" data-onglet="accueil" type="button">
+      <span class="o-ico">🏠</span><span class="o-txt">Accueil</span>
+    </button>
+    <button class="onglet" data-onglet="offres" type="button">
+      <span class="o-ico">🛍️</span><span class="o-txt">Offres</span>
+    </button>
+    <button class="onglet" data-onglet="devis" type="button">
+      <span class="o-ico">📝</span><span class="o-txt">Devis</span>
+    </button>
+    <button class="onglet" data-onglet="plus" type="button">
+      <span class="o-ico">⚙️</span><span class="o-txt">Plus</span>
+    </button>
+  </nav>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+</div>
+
+<script src="pwa.js" defer></script>
+<script src="app.js" defer></script>
+</body>
+</html>

@@ -12,6 +12,20 @@
   var urlSW = prefixe + "sw.js";
   var portee = prefixe;
 
+  // Sur un appareil ou l'app est installee, on ouvre l'INTERFACE APPLICATION,
+  // pas la page web (sauf demande explicite du site avec ?web=1).
+  var params = new URLSearchParams(location.search);
+  var modeApp =
+    window.matchMedia("(display-mode: standalone)").matches ||
+    window.navigator.standalone === true;
+  var surRacineSite =
+    /^\/(index\.html)?$/.test(location.pathname) ||
+    /\/komara-agency-site\/?$/.test(location.pathname);
+  if (modeApp && surRacineSite && !params.has("web")) {
+    location.replace(prefixe + "app.html?source=pwa");
+    return;
+  }
+
   var dejaRecharge = false;
 
   function bandeau(texte, action, surClic) {
@@ -124,8 +138,22 @@
   window.addEventListener("beforeinstallprompt", function (event) {
     event.preventDefault();
     invite = event;
-    afficherBoutonInstall();
+    if (document.body.dataset.installButton !== "off") afficherBoutonInstall();
   });
+
+  // Utilisable depuis l'ecran "Plus" de l'application
+  window.pwaPromptInstall = function () {
+    if (!invite) return false;
+    invite.prompt();
+    var choix = invite.userChoice;
+    invite = null;
+    if (choix && choix.finally) {
+      choix.finally(function () {
+        if (boutonInstall) { boutonInstall.remove(); boutonInstall = null; }
+      });
+    }
+    return true;
+  };
 
   window.addEventListener("appinstalled", function () {
     invite = null;
